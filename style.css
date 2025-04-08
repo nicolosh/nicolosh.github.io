@@ -1,12 +1,35 @@
-
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f9;
-    color: #333;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Font chiaro e leggibile */
+    background-color: #f4f4f9; /* Colore di sfondo chiaro */
+    color: #333; /* Colore del testo */
     display: flex;
     height: 100vh;
 }
+
+
+/* Impostazioni per l'intestazione */
+header {
+    text-align: center; /* Centra il testo */
+	margin: 50px; /*Spazio sopra e sotto*/
+}
+
+
+/* Stile per i link nella sezione "links" */
+.links a {
+    display: inline-block; /* Mostra i link su una linea */
+    margin: 15px; /* Spazio tra i link */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: #3498db; /* Colore blu per i link */
+    font-size: 20px; /* Dimensione del testo */
+}
+
+/* Aggiungi un effetto hover (passaggio sopra il link) */
+.links a:hover {
+    color: #1abc9c; /* Colore verde chiaro al passaggio */
+}
+
 
 #sidebar {
     background: #222;
@@ -19,6 +42,7 @@ body {
 #sidebar h1 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+	color: #2c3e50; /* scuro titolo */
 }
 
 #sidebar nav ul {
