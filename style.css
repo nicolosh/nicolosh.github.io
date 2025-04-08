@@ -17,7 +17,7 @@ header {
 }
 
 
-/* Stile per i link nella sezione "links" */
+/* Stile per i link nella sezione class="links" */
 .links a {
     display: inline-block; /* Mostra i link su una linea */
     margin: 15px; /* Spazio tra i link */
