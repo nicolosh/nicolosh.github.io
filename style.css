@@ -35,7 +35,7 @@ header {
 #sidebar {
     background: #222;
     color: #fff;
-    width: 20%;
+    width: 25%;
     padding: 2rem;
     box-sizing: border-box;
 }
@@ -43,11 +43,11 @@ header {
 #sidebar h1 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-	color: #1abc9c; /* scuro titolo */
+	color: #1abc9c; /* verde chiaro titolo*/
 }
 
 #sidebar img {
-    width: 50%; /* Resize the image to fit the container's width */
+    width: 85%; /* Resize the image to fit the container's width */
     height: auto; /* Maintain aspect ratio */
 }
 
@@ -79,4 +79,20 @@ header {
 #content section h2 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+}
+
+/* Stile per le icone nel sito (icone prese dal pacchetto font-awesome)" */
+.fa-rocket {
+    color: #ff4500;
+    font-size: 18px;
+}
+
+.fa-robot {
+    color: #DC143C;
+    font-size: 18px;
+}
+
+.fa-envelope {
+    color: #FF00FF;
+    font-size: 18px;
 }
