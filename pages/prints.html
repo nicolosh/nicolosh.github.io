@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3D Prints — Erik Mischiatti</title>
+
+  <!-- CSS base + override -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/custom.css">
+
+  <!-- Font Awesome -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="inner">
+      <h1>3D Prints Gallery</h1>
+      <a href="../index.html" class="home-icon" aria-label="Go back to Home">
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <div id="main">
+
+    <!-- Intro Section -->
+    <section id="intro" class="wrapper style3 special">
+      <div class="inner">
+        <header class="major">
+          <h2>Custom 3D Printed Designs</h2>
+          <p>
+            Collection of functional and aesthetic 3D prints — all designed, prototyped, and tested by me.  
+            You can download or order them directly from my
+            <a href="https://cults3d.com/en/users/ErikMischiatti" target="_blank" rel="noopener">Cults3D</a> profile.
+          </p>
+        </header>
+      </div>
+    </section>
+
+    <!-- Prints Section -->
+    <section id="prints" class="wrapper style2">
+      <div class="inner">
+        <header class="major">
+          <h2>Featured Prints</h2>
+        </header>
+
+        <div class="projects-grid">
+
+          <!-- Print 1 -->
+          <article class="card project-card">
+            <a class="project-thumb" href="https://cults3d.com/en/3d-model/home/bottle-drainer-erikmischiatti" target="_blank">
+              <img src="../pics/print_bottle_drainer.jpg" alt="Bottle Drainer" loading="lazy" decoding="async">
+            </a>
+            <div class="project-body">
+              <h3 class="project-title">Bottle Drainer</h3>
+              <p class="project-desc">
+                A minimalist 3D-printed bottle drying rack designed to hold reusable bottles upside down for efficient air drying.
+              </p>
+              <div class="project-actions">
+                <a class="btn" href="https://cults3d.com/en/3d-model/home/bottle-drainer-erikmischiatti"
+                   target="_blank" rel="noopener noreferrer">View on Cults3D</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Altri placeholder -->
+          <article class="card project-card">
+            <a class="project-thumb" href="#">
+              <img src="../pics/print_example3.jpg" alt="..." loading="lazy" decoding="async">
+            </a>
+            <div class="project-body">
+              <h3 class="project-title">Coming soon</h3>
+              <p class="project-desc">...</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Viewer Test -->
+    <section id="viewer-test" class="wrapper style2">
+      <div class="inner">
+        <header class="major">
+          <h2>3D Viewer Debug</h2>
+          <p>Testing the local OBJ model rendering below:</p>
+        </header>
+        <div id="viewer-container" style="width:100%; max-width:700px; margin:0 auto;">
+          <canvas id="test-viewer" style="width:100%; height:400px; border-radius:10px; background:#ebe7df;"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="wrapper style3 special">
+      <div class="inner">
+        <header class="major">
+          <h2>More Designs & Resources</h2>
+          <p>Explore all my downloadable 3D models directly on Cults3D.</p>
+          <a href="https://cults3d.com/en/creations/mine" target="_blank" class="button primary">Cults3D Profile</a>
+        </header>
+      </div>
+    </section>
+
+  </div><!-- /#main -->
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="inner">
+      <ul class="copyright">
+        <li>&copy; Erik Mischiatti</li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Three.js Viewer Debug Script -->
+  <script type="module">
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js";
+import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/controls/OrbitControls.js";
+import { OBJLoader } from "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/loaders/OBJLoader.js";
+
+const canvas = document.getElementById("test-viewer");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setClearColor(0xebe7df);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 16 / 9, 0.1, 100);
+camera.position.set(2, 2, 3);
+scene.add(camera);
+
+// luce
+scene.add(new THREE.AmbientLight(0xffffff, 1.3));
+const dir = new THREE.DirectionalLight(0xffffff, 1.0);
+dir.position.set(2, 2, 3);
+scene.add(dir);
+
+// oggetti di test
+const grid = new THREE.GridHelper(10, 10, 0x333333, 0xbbbbbb);
+scene.add(grid);
+const cube = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshStandardMaterial({ color: 0x3366ff })
+);
+scene.add(cube);
+
+// controlli orbitali
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.4;
+
+function resize() {
+  const width = canvas.clientWidth || 700;
+  const height = canvas.clientHeight || 400;
+  renderer.setSize(width, height, false);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  resize();
+  cube.rotation.y += 0.01;
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+</script>
